@@ -1,6 +1,6 @@
 """
 Verification Script - Tests All Components Before Submission
-Team: Innov8torX
+Team: Innov8torX_mini
 Run this to ensure everything works before submitting
 """
 

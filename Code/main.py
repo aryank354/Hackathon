@@ -5,7 +5,7 @@ Members: Aryan Kanojia, Anurag Kumar
 """
 
 from flight_analyzer import RankBasedFlightDifficultyScorer
-from enhanced_ml_analyzer import run_enhanced_analysis
+from ml_analyzer import run_enhanced_analysis
 import pandas as pd
 import warnings
 warnings.filterwarnings('ignore')
@@ -20,11 +20,11 @@ def run_complete_hackathon_analysis():
     print("=" * 80)
 
     data_paths = {
-        'flights': './Data/Flight_Level_Data.csv',
-        'pnr_flights': './Data/PNR_Flight_Level_Data.csv',
-        'pnr_remarks': './Data/PNR_Remark_Level_Data.csv',
-        'bags': './Data/Bag_Level_Data.csv',
-        'airports': './Data/Airports_Data.csv'
+        'flights': '../Data/Flight_Level_Data.csv',
+        'pnr_flights': '../Data/PNR_Flight_Level_Data.csv',
+        'pnr_remarks': '../Data/PNR_Remark_Level_Data.csv',
+        'bags': '../Data/Bag_Level_Data.csv',
+        'airports': '../Data/Airports_Data.csv'
     }
 
     # ========================================================================

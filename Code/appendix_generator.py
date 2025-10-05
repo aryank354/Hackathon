@@ -1,5 +1,5 @@
 """
-Appendix Generator for SkyHack Challenge - Fixed Version
+Appendix Generator for SkyHack Challenge
 Generates visualizations and analysis charts for the appendix
 """
 
