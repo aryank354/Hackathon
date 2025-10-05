@@ -1,0 +1,12 @@
+=== SKYHACK CHALLENGE - SUMMARY STATISTICS ===
+
+Total Flights Analyzed: 8099
+Difficult Flights: 1616
+Medium Flights: 4046
+Easy Flights: 2437
+Average Difficulty Score: 50.09
+Average Delay (All Flights): 21.18
+Average Delay (Difficult): 53.31
+Average Load Factor: 1.01
+Flights with Insufficient Ground Time: 630
+International Flights: 747
