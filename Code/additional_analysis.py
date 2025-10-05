@@ -1,7 +1,7 @@
-# additional_analysis.py (New & Improved Version)
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
 
 def create_final_visualizations(data_file='final_flight_data.csv'):
     """
@@ -15,10 +15,13 @@ def create_final_visualizations(data_file='final_flight_data.csv'):
         print(f"ERROR: '{data_file}' not found. Please run 'main.py' first to generate it.")
         return
 
+    # Ensure Charts folder exists
+    charts_dir = os.path.join(os.getcwd(), "Charts")
+    os.makedirs(charts_dir, exist_ok=True)
+
     plt.style.use('seaborn-v0_8-talk')
 
     # === Chart 1: The "Why" Chart (Primary Drivers) ===
-    # This directly visualizes the text output you see.
     difficult_flights = df[df['difficulty_class'] == 'Difficult']
     primary_drivers = difficult_flights['primary_driver'].value_counts().head(5)
 
@@ -28,8 +31,8 @@ def create_final_visualizations(data_file='final_flight_data.csv'):
     plt.xlabel("Number of Times as #1 Cause", fontsize=14)
     plt.ylabel("Primary Driver Feature", fontsize=14)
     plt.tight_layout()
-    plt.savefig('primary_drivers_chart.png')
-    print("Chart 1: 'primary_drivers_chart.png' saved.")
+    plt.savefig(os.path.join(charts_dir, 'primary_drivers_chart.png'))
+    print("Chart 1: 'primary_drivers_chart.png' saved in Charts/")
 
     # === Chart 2: The "Where" Chart (Difficult Destinations) ===
     top_destinations = difficult_flights['scheduled_arrival_station_code'].value_counts().head(10)
@@ -41,11 +44,10 @@ def create_final_visualizations(data_file='final_flight_data.csv'):
     plt.xlabel("Destination Airport", fontsize=14)
     plt.xticks(rotation=45, ha='right')
     plt.tight_layout()
-    plt.savefig('top_destinations_chart.png')
-    print("Chart 2: 'top_destinations_chart.png' saved.")
+    plt.savefig(os.path.join(charts_dir, 'top_destinations_chart.png'))
+    print("Chart 2: 'top_destinations_chart.png' saved in Charts/")
 
     # === Chart 3: The "Proof" Chart (Validation) ===
-    # This proves your model works by linking the score to delays.
     performance = df.groupby('difficulty_class')['delay_minutes'].mean().reindex(['Easy', 'Medium', 'Difficult'])
 
     plt.figure(figsize=(10, 7))
@@ -53,15 +55,14 @@ def create_final_visualizations(data_file='final_flight_data.csv'):
     plt.title("Average Delay by Difficulty Class", fontsize=20, weight='bold')
     plt.ylabel("Average Departure Delay (Minutes)", fontsize=14)
     plt.xlabel("Calculated Difficulty Class", fontsize=14)
-    # Add labels on top of the bars
     for index, value in enumerate(performance.values):
         plt.text(index, value + 1, f'{value:.1f} min', ha='center', va='bottom', fontsize=14, weight='bold')
     plt.tight_layout()
-    plt.savefig('delay_validation_chart.png')
-    print("Chart 3: 'delay_validation_chart.png' saved.")
+    plt.savefig(os.path.join(charts_dir, 'delay_validation_chart.png'))
+    print("Chart 3: 'delay_validation_chart.png' saved in Charts/")
 
     plt.close('all')
 
 if __name__ == "__main__":
     create_final_visualizations()
-    print("\n🎉 All 3 presentation charts have been successfully created!")
+    print("\n🎉 All 3 presentation charts have been successfully created in the 'Charts' folder!")
