@@ -116,7 +116,7 @@ It is highly recommended to use a **Python virtual environment** to manage depen
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
     ```
     ```powershell
-    script .\venv\Scripts\activate
+    .\venv\Scripts\activate
     cd .\Code\
     ```
     *(Your terminal prompt should now start with `(venv)`)*.
